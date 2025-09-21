@@ -1,3 +1,1 @@
-This program runs with Python and the PyQt5 library.
-
-PyQt5 is required.
+PyQt5
