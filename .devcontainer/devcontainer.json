@@ -1,14 +1,7 @@
 {
   "name": "PyQt5 Codespace",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
-  "features": {
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11",
-      "installPyPIPackages": true,
-      "requirementsFile": "requirements.txt"
-    }
-  },
-  "postCreateCommand": "apt-get update && apt-get install -y libgl1-mesa-glx",
+  "onCreateCommand": "pip install PyQt5 && apt-get update && apt-get install -y libgl1-mesa-glx",
   "customizations": {
     "vscode": {
       "extensions": [
