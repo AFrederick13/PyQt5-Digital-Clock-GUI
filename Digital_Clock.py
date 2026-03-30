@@ -59,8 +59,11 @@ class DigitalClock(QWidget):
         ''')
 
         # --- Using a relative path to make the project portable ---
-        # Get the directory of the current script
-        script_dir = os.path.dirname(os.path.abspath(__file__))
+        # Get the directory of the current script or the PyInstaller extracted location
+        if getattr(sys, 'frozen', False):
+            script_dir = sys._MEIPASS
+        else:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
         font_path = os.path.join(script_dir, 'DS-DIGII.TTF')
         font_id = QFontDatabase.addApplicationFont(font_path)
 
@@ -126,12 +129,4 @@ if __name__ == '__main__':
 
 # project notes:
 
-#   2. Features
-#    * Date Display: Adding the current date below the time.
 #    * Customization: Adding a context menu (right-click) to change colors, toggle between 12/24-hour formats, or keep the window "Always on Top."
-#    * Interactive Draggable Window: If the window is frameless, you'll need logic to drag it around.
-
-#   3. Code Quality & Project Structure
-#    * Refactoring: Move the UI setup and styling into separate methods or a stylesheet file (.qss) for better readability.
-#    * Error Handling: Improve font loading logic (it's already decent, but could be more robust).
-#    * Packaging: You have build/ and dist/ folders, suggesting you've tried PyInstaller. I can help optimize the build script to ensure the .TTF font is bundled correctly.
